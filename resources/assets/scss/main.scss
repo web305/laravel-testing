@@ -1,0 +1,15 @@
+// FontAwesome
+@import '../bower_components/font-awesome/scss/font-awesome';
+
+// Booststrap
+@import '../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+
+// Partials
+@import "partials/fonts";
+
+// Settings
+@import "settings/variables";
+@import "settings/mediaqueries";
+
+// Layout
+@import "base";

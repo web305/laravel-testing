@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://laravel-test/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY', 'kj22PLFDdEgJa70x65wM9KUAWBH4FOug'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
