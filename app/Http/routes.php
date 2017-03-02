@@ -10,14 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', 'HomeController@index');
-
-Route::get('/signup', 'SignUpController@index');
-Route::get('/signin', 'SignInController@index');
-
-Route::get('/dashboard', 'DashboardController@index');
-
+Route::get('/', [
+	'uses' => 'HomeController@index',
+	'as' => 'home'
+]);
+Route::get('/signup', [
+	'uses' => 'SignUpController@index',
+	'as' => 'signup'
+]);
+Route::get('/signin', [
+	'uses' => 'SignInController@index',
+	'as' => 'signin'
+]);
 Route::post('/signup', [
 	'uses' => 'SignUpController@postSignUp',
 	'as' => 'signup'
@@ -26,5 +30,9 @@ Route::post('/signin', [
 	'uses' => 'SignInController@postSignIn',
 	'as' => 'signin'
 ]);
-	
+Route::get('/dashboard', [
+	'uses' => 'DashboardController@index',
+	'as' => 'dashboard',
+	'middleware' => 'auth'
+]);
 	
