@@ -13,7 +13,18 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+Route::get('/signup', 'SignUpController@index');
+Route::get('/signin', 'SignInController@index');
+
+Route::get('/dashboard', 'DashboardController@index');
+
+Route::post('/signup', [
+	'uses' => 'SignUpController@postSignUp',
+	'as' => 'signup'
 ]);
+Route::post('/signin', [
+	'uses' => 'SignInController@postSignIn',
+	'as' => 'signin'
+]);
+	
+	

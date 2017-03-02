@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-class HomeController extends Controller {
+use App\User;
+use Illuminate\Http\Request;
+
+class UserController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Home Controller
+	| User Controller
 	|--------------------------------------------------------------------------
 	|
 	| This controller renders your application's "dashboard" for users that
@@ -31,7 +34,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('user');
 	}
 
 }

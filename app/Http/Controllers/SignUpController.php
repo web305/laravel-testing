@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-class HomeController extends Controller {
+use App\User;
+use Illuminate\Http\Request;
+
+class SignUpController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Home Controller
+	| SignUp Controller
 	|--------------------------------------------------------------------------
 	|
 	| This controller renders your application's "dashboard" for users that
@@ -31,7 +34,29 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('signup');
 	}
-
+	
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function postSignUp(Request $request)
+	{
+		$username = $request['username'];
+		$email = $request['email'];
+		$password = bcrypt($request['password']);
+		
+		$user = new User();
+		$user->username = $username;
+		$user->email = $email;
+		$user->password = $password;
+		
+		$user->save();
+		
+		Auth::login($user);
+		
+		return redirect()->route('dashboard');		
+	}
 }

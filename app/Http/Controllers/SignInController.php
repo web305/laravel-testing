@@ -1,11 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
-class HomeController extends Controller {
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class SignInController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Home Controller
+	| SignIn Controller
 	|--------------------------------------------------------------------------
 	|
 	| This controller renders your application's "dashboard" for users that
@@ -31,7 +35,20 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('signin');
+	}
+	
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function postSignIn(Request $request)
+	{		
+		if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+			return redirect()->route('dashboard');
+		}
+		return redirect()->back();		
 	}
 
 }
